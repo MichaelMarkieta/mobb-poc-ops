@@ -1,0 +1,6 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: mobb-poc-frontend
+spec:
+  host: mobb-poc-frontend-development.apps.mm-public.cfpb.p1.openshiftapps.com

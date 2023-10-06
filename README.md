@@ -1,17 +1,21 @@
 # mobb-poc-ops
 
-
-### GitOps files stored in environment specific folders that correspond to environments in cloud
+### GitOps is performed using ArgoCD with Kustomize resources
 
 ```
 .
-├── development
-│   ├── mobb-poc-backend
-│   └── mobb-poc-frontend
-├── production
-│   ├── mobb-poc-backend
-│   └── mobb-poc-frontend
-└── useracceptance
-    ├── mobb-poc-backend
+└── apps
     └── mobb-poc-frontend
+        ├── base
+        │   ├── deployment.yaml
+        │   ├── kustomization.yaml
+        │   ├── route.yaml
+        │   └── service.yaml
+        └── overlays
+            ├── development
+            │   └── kustomization.yaml
+            ├── production
+            │   └── kustomization.yaml
+            └── useracceptance
+                └── kustomization.yaml
 ```
