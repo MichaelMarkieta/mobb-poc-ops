@@ -14,13 +14,15 @@ spec:
       containers:
         - name: mobb-poc-frontend
           image: mobb-poc-frontend
+          restartPolicy: Always
+          imagePullPolicy: Always
           resources:
             requests:
               memory: "64Mi"
-              cpu: "250m"
+              cpu: "0.25"
             limits:
               memory: "256Mi"
-              cpu: "1000m"
+              cpu: "1"
           livenessProbe:
             httpGet:
               path: /
@@ -33,5 +35,3 @@ spec:
               port: 8080
             initialDelaySeconds: 10
             timeoutSeconds: 10
-      restartPolicy: Always
-      imagePullPolicy: Always
