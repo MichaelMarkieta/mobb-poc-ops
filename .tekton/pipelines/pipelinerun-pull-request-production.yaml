@@ -1,0 +1,42 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  annotations:
+    pipelinesascode.tekton.dev/max-keep-runs: "5"
+    pipelinesascode.tekton.dev/task: "[github-request-reviewers]"
+    pipelinesascode.tekton.dev/on-cel-expression: |
+            event == "pull_request" && "apps/mobb-poc-frontend/overlays/production".pathChanged()
+  name: pipelinerun-push-main-production
+  namespace: development-pipelines
+spec:
+  params:
+    - name: pull_request_number
+      value: "{{ pull_request_number }}"
+  pipelineSpec:
+    params:
+      - name: pull_request_number
+    tasks:
+      - name: request-reviewers
+        taskRef:
+          name: github-request-reviewers
+          kind: Task
+        workspaces:
+          - name: ssh-directory
+            workspace: ssh-directory
+        params:
+          - name: PACKAGE
+            value: "MichaelMarkieta/mobb-poc-ops"
+          - name: PULL_REQUEST_NUMBER
+            value: $(params.pull_request_number)
+          - name: REVIEWERS
+            value: "MichaelMarkieta"
+    workspaces:
+      - name: basic-auth
+      - name: ssh-directory
+  workspaces:
+    - name: basic-auth
+      secret:
+        secretName: "{{ git_auth_secret }}"
+    - name: ssh-directory
+      secret:
+        secretName: github-ssh
