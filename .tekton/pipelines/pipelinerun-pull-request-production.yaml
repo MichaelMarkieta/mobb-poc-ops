@@ -5,7 +5,7 @@ metadata:
     pipelinesascode.tekton.dev/max-keep-runs: "5"
     pipelinesascode.tekton.dev/task: "[github-request-reviewers]"
     pipelinesascode.tekton.dev/on-cel-expression: |
-            event == "pull_request" && "apps/mobb-poc-frontend/overlays/production".pathChanged()
+            event == "pull_request" && "apps/*/overlays/production/*".pathChanged()
   name: pipelinerun-push-main-production
   namespace: development-pipelines
 spec:
