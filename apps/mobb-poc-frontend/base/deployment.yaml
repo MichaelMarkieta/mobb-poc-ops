@@ -11,6 +11,13 @@ spec:
   template:
     metadata:
     spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              name: mobb-poc-frontend
       containers:
         - name: mobb-poc-frontend
           image: mobb-poc-frontend
