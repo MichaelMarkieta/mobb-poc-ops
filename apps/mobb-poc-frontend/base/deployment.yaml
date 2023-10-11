@@ -17,7 +17,7 @@ spec:
           whenUnsatisfiable: DoNotSchedule
           labelSelector:
             matchLabels:
-              name: mobb-poc-frontend
+              app: mobb-poc-frontend
       containers:
         - name: mobb-poc-frontend
           image: mobb-poc-frontend
