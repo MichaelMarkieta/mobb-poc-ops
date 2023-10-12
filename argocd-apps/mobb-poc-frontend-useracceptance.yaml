@@ -1,0 +1,16 @@
+project: useracceptance
+source:
+  repoURL: 'https://github.com/MichaelMarkieta/mobb-poc-ops'
+  path: apps/mobb-poc-frontend/overlays/useracceptance
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: useracceptance
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - PrunePropagationPolicy=foreground
+revisionHistoryLimit: 5

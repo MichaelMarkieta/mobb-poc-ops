@@ -1,0 +1,16 @@
+project: development
+source:
+  repoURL: 'https://github.com/MichaelMarkieta/mobb-poc-ops'
+  path: apps/mobb-poc-frontend/overlays/development
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: development
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - PrunePropagationPolicy=foreground
+revisionHistoryLimit: 5
