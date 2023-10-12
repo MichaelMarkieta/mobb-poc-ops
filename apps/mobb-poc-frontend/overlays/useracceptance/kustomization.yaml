@@ -6,4 +6,4 @@ patchesStrategicMerge:
 images:
   - name: mobb-poc-frontend
     newName: image-registry.openshift-image-registry.svc.cluster.local:5000/useracceptance/mobb-poc-frontend
-    newTag: 7a6bf9553d2a9a2ab6018bae92c89f1020169e20
+    newTag: 8032f351e8037ee93890ee90251ba09cf1ff1268
