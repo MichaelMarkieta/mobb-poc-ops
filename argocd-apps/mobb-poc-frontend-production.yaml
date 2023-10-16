@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mobb-poc-frontend-production
+  namespace: openshift-gitops
+spec:
+  project: production
+  source:
+    repoURL: 'https://github.com/MichaelMarkieta/mobb-poc-ops'
+    path: apps/mobb-poc-frontend/overlays/production
+    targetRevision: main
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: production
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - PrunePropagationPolicy=foreground
+  revisionHistoryLimit: 5
