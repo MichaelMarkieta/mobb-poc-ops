@@ -1,0 +1,9 @@
+namespace: useracceptance
+resources:
+  - ../../base
+patchesStrategicMerge:
+  - route.yaml
+images:
+  - name: mobb-poc-frontend
+    newName: image-registry.openshift-image-registry.svc.cluster.local:5000/production/mobb-poc-frontend
+    newTag: c71c5cad3b688481f460a528d48191d26873cfdf
