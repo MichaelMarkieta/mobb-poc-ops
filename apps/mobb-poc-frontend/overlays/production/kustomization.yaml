@@ -1,6 +1,7 @@
 namespace: production
 resources:
   - ../../base
+  - hpa.yaml
 patchesStrategicMerge:
   - route.yaml
 images:
