@@ -1,4 +1,4 @@
-namespace: useracceptance
+namespace: production
 resources:
   - ../../base
 patchesStrategicMerge:
