@@ -3,7 +3,7 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - route.yaml
-  - hpa.yaml
+  - horizontalpodautoscaler.yaml
 images:
   - name: mobb-poc-frontend
     newName: image-registry.openshift-image-registry.svc.cluster.local:5000/production/mobb-poc-frontend
